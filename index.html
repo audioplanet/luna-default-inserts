@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Default Inserts</title>
+  <style>
+    :root { color-scheme: dark; --accent: #F7C449; --bg: #151515; --panel: #1e1e21; --line: #2c2c30; --dim: #8a8a90; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: #ddd; font: 13px -apple-system, Helvetica, sans-serif; display: flex; flex-direction: column; height: 100vh; }
+    button, input { font: inherit; color: inherit; }
+    button { background: #2a2a2e; border: 1px solid #44444a; border-radius: 5px; padding: 4px 10px; cursor: pointer; }
+    button:hover { border-color: #66666c; }
+    button:disabled { opacity: .4; cursor: default; }
+    header { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #202023; border-bottom: 1px solid var(--line); }
+    header h1 { font-size: 14px; margin: 0; font-weight: 600; }
+    #enabled { margin-left: auto; min-width: 52px; }
+    #enabled.on { background: var(--accent); color: #000; border-color: var(--accent); }
+    #status { color: var(--dim); font-size: 12px; padding: 6px 14px 0; min-height: 20px; }
+    main { flex: 1; overflow: auto; padding: 6px 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+    #lists { display: flex; flex-direction: column; gap: 10px; }
+    section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+    section h2 { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--dim); margin: 0 0 8px; font-weight: 600; }
+    .plugin { display: flex; align-items: center; gap: 6px; padding: 4px 0; }
+    .plugin .n { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .plugin button { padding: 1px 7px; }
+    .empty { color: var(--dim); font-style: italic; padding: 2px 0 6px; }
+    .add { position: relative; margin-top: 6px; }
+    .add input { width: 100%; background: #111; border: 1px solid #3a3a40; border-radius: 5px; padding: 5px 8px; }
+    .results { position: absolute; left: 0; right: 0; top: 100%; z-index: 5; background: #26262a; border: 1px solid #44444a; border-radius: 5px; max-height: 180px; overflow: auto; }
+    .results div { padding: 5px 8px; cursor: pointer; }
+    .results div:hover, .results div.sel { background: #34343a; }
+    .results .m { color: var(--dim); font-size: 11px; margin-left: 6px; }
+    .actions { display: flex; gap: 8px; }
+    #log { font: 11px Menlo, monospace; color: #aaa; max-height: 120px; overflow: auto; white-space: pre-wrap; }
+    #log .err { color: #ff8a80; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Default Inserts</h1>
+    <button id="enabled" title="Add plugins to new tracks and buses">On</button>
+  </header>
+  <div id="status">connecting…</div>
+  <main>
+    <div id="lists"></div>
+    <div class="actions">
+      <button id="applyAll" title="Add the chosen plugins to tracks and buses that are missing them">Apply to existing tracks</button>
+    </div>
+    <section>
+      <h2>Activity</h2>
+      <div id="log"></div>
+    </section>
+  </main>
+  <script src="vendor/luna.global.js"></script>
+  <script src="logic.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+    "package_name": "Default Inserts",
+    "id": "com.audioplanet.default_inserts",
+    "title": "Default Inserts",
+    "version": "0.1.0",
+    "manufacturer": "Audioplanet",
+    "description": "Puts the plugins you choose (Console 1 by default) on every new audio track, instrument track and bus.",
+    "categories": ["Workflow"],
+    "sdk_version": "3.1.2",
+    "min_luna_version": "3.1.2",
+    "engines": ["luna"],
+    "html": "index.html",
+    "target": "window",
+    "floating": true,
+    "show_with_session": true,
+    "width": 460,
+    "height": 560
+}
